@@ -1,7 +1,9 @@
 library(shiny)
-library(heritage)  # Your package
+library(heritage)  # Make sure your package is installed and loaded
 library(dplyr)
+library(shinythemes)
 
+# Server logic
 server <- function(input, output) {
 
   # Reactive data filtering based on input
@@ -22,9 +24,9 @@ server <- function(input, output) {
     plot_region_category(data = filteredData())
   })
 
-  # Render the table of top countries
+  # Render the table of top countries based on filtered data
   output$topCountriesTable <- renderTable({
-    heritage::table_top_countries(data = heritage_clean)  # Call your table_top_countries function
+    heritage::table_top_countries(data = filteredData())  # Pass filtered data here
   }, sanitize.text.function = identity)
 
 }
