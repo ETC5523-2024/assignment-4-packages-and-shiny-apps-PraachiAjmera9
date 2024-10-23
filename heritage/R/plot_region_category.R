@@ -7,7 +7,7 @@
 #' @param heritage_clean The cleaned heritage dataset.
 #' @return A ggplot object showing the distribution of sites by region and category.
 #' @export
-plot_region_category <- function(data = heritage_clean) {
+plot_region_category <- function(data) {
   region_catfin_summary <- data %>%
     group_by(REGION, CATFIN_FULL) %>%
     summarise(count = n(), .groups = 'drop')

@@ -1,14 +1,17 @@
 Package: heritage
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Mapping the World’s Heritage: Insights into Trends and Regional Distribution of UNESCO Sites
+Version: 0.1.0
 Authors@R: 
-    person("Praachi", "Ajmera", , "pajm0001@student.monash.edu", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Praachi", "Ajmera", email = "pajm0001@student.monash.edu", role = c("aut", "cre"))
+Description: This package provides functions to analyze trends and distributions of UNESCO World Heritage Sites, 
+             including visualizations and data summarization.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
-Depends: 
-    R (>= 2.10)
+Depends: R (>= 4.0.0)
 LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

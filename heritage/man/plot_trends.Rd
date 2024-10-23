@@ -4,7 +4,7 @@
 \alias{plot_trends}
 \title{Plot Trends in World Heritage Site Inscriptions by Region}
 \usage{
-plot_trends(data)
+plot_trends(data = heritage_clean)
 }
 \arguments{
 \item{heritage_clean}{The cleaned heritage dataset.}

@@ -2,16 +2,16 @@
 % Please edit documentation in R/table_top_countries.R
 \name{table_top_countries}
 \alias{table_top_countries}
-\title{Generate a Table of Top 10 Countries with the Most World Heritage Sites}
+\title{Generate a Data Frame of Top 10 Countries with the Most World Heritage Sites}
 \usage{
 table_top_countries(data)
 }
 \arguments{
-\item{heritage_clean}{The cleaned heritage dataset.}
+\item{data}{The cleaned heritage dataset.}
 }
 \value{
-A kable table object.
+A data frame of top countries.
 }
 \description{
-This function generates a table showing the top 10 countries with the highest number of World Heritage Sites.
+This function generates a data frame showing the top 10 countries with the highest number of World Heritage Sites.
 }
