@@ -1,45 +1,60 @@
 library(shiny)
 library(heritage)  # Make sure your package is installed and loaded
 library(dplyr)
-library(shinythemes)
+library(shinydashboard)
 
 
-# UI Layout
-ui <- fluidPage(
-  theme = shinytheme("cerulean"),  # Add custom theme for styling
+ui <- dashboardPage(
 
-  titlePanel("UNESCO World Heritage Sites Explorer"),
+  # Dashboard Header
+  dashboardHeader(title = "UNESCO Heritage Explorer"),
 
-  sidebarLayout(
-    sidebarPanel(
+  # Sidebar
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Trends", tabName = "trends", icon = icon("chart-line")),
+      menuItem("Region & Category", tabName = "region_category", icon = icon("globe")),
+      menuItem("Top Countries", tabName = "top_countries", icon = icon("flag")),
+      hr(),
       selectInput("category", "Select Category:",
                   choices = c("Cultural", "Natural", "Cultural/Natural", "Not Designated")),
-      helpText("Select a category of World Heritage Sites."),
-
       sliderInput("yearRange",
                   "Select Year Range:",
                   min = 1990,
                   max = 2023,
                   value = c(2000, 2023)),
-      helpText("Select a range of years for site inscriptions."),
+      actionButton("update", "Update Visuals", icon = icon("sync"))
+    )
+  ),
 
-      actionButton("update", "Update Visuals"),
-      helpText("Click 'Update Visuals' to refresh the plots and table based on your selections.")
-    ),
+  # Body content for each tab
+  dashboardBody(
+    tabItems(
+      # First tab content for Trends
+      tabItem(tabName = "trends",
+              fluidRow(
+                box(title = "Trends in Heritage Sites", width = 12, solidHeader = TRUE,
+                    status = "primary", plotOutput("trendsPlot")),
+                helpText("This plot shows the number of World Heritage Sites inscribed each year by region.")
+              )
+      ),
 
-    mainPanel(
-      tabsetPanel(
-        tabPanel("Trends",
-                 plotOutput("trendsPlot"),
-                 helpText("This plot shows the number of World Heritage Sites inscribed each year by region. The trends indicate changes in inscriptions over time.")),
+      # Second tab content for Region & Category
+      tabItem(tabName = "region_category",
+              fluidRow(
+                box(title = "Heritage Sites by Region and Category", width = 12, solidHeader = TRUE,
+                    status = "success", plotOutput("regionCategoryPlot")),
+                helpText("This plot displays the number of heritage sites by region and category.")
+              )
+      ),
 
-        tabPanel("Region & Category",
-                 plotOutput("regionCategoryPlot"),
-                 helpText("This plot displays the number of heritage sites by region and category. Use the log scale to compare regions with significantly different numbers of sites.")),
-
-        tabPanel("Top Countries",
-                 tableOutput("topCountriesTable"),
-                 helpText("This table shows the top 10 countries with the most World Heritage Sites, based on your selected category and year range."))
+      # Third tab content for Top Countries
+      tabItem(tabName = "top_countries",
+              fluidRow(
+                box(title = "Top 10 Countries with Most Heritage Sites", width = 12, solidHeader = TRUE,
+                    status = "info", tableOutput("topCountriesTable")),
+                helpText("This table shows the top 10 countries with the most World Heritage Sites based on the selected category and year range.")
+              )
       )
     )
   )
