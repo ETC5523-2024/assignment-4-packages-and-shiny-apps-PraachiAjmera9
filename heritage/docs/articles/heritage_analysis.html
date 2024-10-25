@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>heritage_analysis • heritage</title>
+<title>Exploring UNESCO World Heritage Site • heritage</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="heritage_analysis">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Exploring UNESCO World Heritage Site">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -33,7 +33,7 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/heritage_analysis.html">heritage_analysis</a></li>
+<li><a class="dropdown-item" href="../articles/heritage_analysis.html">Exploring UNESCO World Heritage Site</a></li>
   </ul>
 </li>
       </ul>
@@ -54,7 +54,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>heritage_analysis</h1>
+      <h1>Exploring UNESCO World Heritage Site</h1>
             
       
 
@@ -63,8 +63,97 @@
 
     
     
-
-  </main>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">heritage</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Load your dataset</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">heritage_clean</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Display the structure of the dataset to understand its components</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">heritage_clean</span><span class="op">)</span></span>
+<span><span class="co">#&gt; sf [1,052 × 11] (S3: sf/tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ NAME       : chr [1:1052] "Minaret and Archaeological Remains of Jam" "Cultural Landscape and Archaeological Remains of the Bamiyan Valley" "Historic Centres of Berat and Gjirokastra" "Butrint" ...</span></span>
+<span><span class="co">#&gt;  $ LONGITUDE  : num [1:1052] 64.52 67.83 20.13 20.03 2.38 ...</span></span>
+<span><span class="co">#&gt;  $ LATITUDE   : num [1:1052] 34.4 34.8 40.1 39.8 36.5 ...</span></span>
+<span><span class="co">#&gt;  $ COUNTRY    : chr [1:1052] "Afghanistan" "Afghanistan" "Albania" "Albania" ...</span></span>
+<span><span class="co">#&gt;  $ REGION     : chr [1:1052] "Asia and the Pacific" "Asia and the Pacific" "Europe and North America" "Europe and North America" ...</span></span>
+<span><span class="co">#&gt;  $ DATEINSCRI : num [1:1052] 2002 2003 2005 1992 1982 ...</span></span>
+<span><span class="co">#&gt;  $ DANGER     : chr [1:1052] "2002" "2003" NA NA ...</span></span>
+<span><span class="co">#&gt;  $ AREAHA     : num [1:1052] 70 158.9 58.9 NA 52.2 ...</span></span>
+<span><span class="co">#&gt;  $ CATFIN     : chr [1:1052] "CD" "CD" "C" "C" ...</span></span>
+<span><span class="co">#&gt;  $ geometry   :sfc_POINT of length 1052; first list element:  'XY' num [1:2] 64.5 34.4</span></span>
+<span><span class="co">#&gt;  $ CATFIN_FULL: chr [1:1052] "Cultural" "Cultural" "Cultural" "Cultural" ...</span></span>
+<span><span class="co">#&gt;  - attr(*, "sf_column")= chr "geometry"</span></span>
+<span><span class="co">#&gt;  - attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA NA NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "names")= chr [1:10] "NAME" "LONGITUDE" "LATITUDE" "COUNTRY" ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Assuming you have a function to get trends data</span></span>
+<span><span class="va">trends_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_trends.html">plot_trends</a></span><span class="op">(</span><span class="va">heritage_clean</span><span class="op">)</span></span></code></pre></div>
+<p><img src="heritage_analysis_files/figure-html/plot_trends_func-1.png" width="700"></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Plotting function for regional distribution</span></span>
+<span><span class="fu"><a href="../reference/plot_region_category.html">plot_region_category</a></span><span class="op">(</span><span class="va">heritage_clean</span><span class="op">)</span></span></code></pre></div>
+<p><img src="heritage_analysis_files/figure-html/plot_region_func-1.png" width="700"></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Function to get top countries data</span></span>
+<span><span class="va">top_countries_data</span> <span class="op">&lt;-</span> <span class="fu">heritage</span><span class="fu">::</span><span class="fu"><a href="../reference/table_top_countries.html">table_top_countries</a></span><span class="op">(</span><span class="va">heritage_clean</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">top_countries_data</span>, caption <span class="op">=</span> <span class="st">"Top 10 Countries with Most UNESCO World Heritage Sites"</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<caption>Top 10 Countries with Most UNESCO World Heritage
+Sites</caption>
+<thead><tr class="header">
+<th align="left">COUNTRY</th>
+<th align="right">Total_Sites</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">China</td>
+<td align="right">49</td>
+</tr>
+<tr class="even">
+<td align="left">Italy</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">Spain</td>
+<td align="right">42</td>
+</tr>
+<tr class="even">
+<td align="left">France</td>
+<td align="right">38</td>
+</tr>
+<tr class="odd">
+<td align="left">Germany</td>
+<td align="right">35</td>
+</tr>
+<tr class="even">
+<td align="left">India</td>
+<td align="right">34</td>
+</tr>
+<tr class="odd">
+<td align="left">Mexico</td>
+<td align="right">34</td>
+</tr>
+<tr class="even">
+<td align="left">United Kingdom of Great Britain and Northern
+Ireland</td>
+<td align="right">29</td>
+</tr>
+<tr class="odd">
+<td align="left">Russian Federation</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="left">Iran (Islamic Republic of)</td>
+<td align="right">21</td>
+</tr>
+</tbody>
+</table></main>
 </div>
 
 
