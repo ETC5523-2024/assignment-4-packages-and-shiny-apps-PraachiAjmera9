@@ -24,7 +24,7 @@ library(heritage)
 ```
 
 
-```{r}
+```{r data_analysis}
 
 # Load your dataset
 data(heritage_clean)  
@@ -32,27 +32,26 @@ data(heritage_clean)
 # Display the structure of the dataset to understand its components
 str(heritage_clean)
 
-head(heritage_clean)
 ```
 
 
-```{r}
+```{r plot_trends_func}
 # Assuming you have a function to get trends data
-#trends_data <- plot_trends(heritage_clean)
+trends_data <- plot_trends(heritage_clean)
 
 ```
 
-```{r}
+```{r plot_region_func}
 # Plotting function for regional distribution
-# plot_region_category(heritage_clean)
+plot_region_category(heritage_clean)
 
 ```
 
 
-```{r}
+```{r top_func}
 # Function to get top countries data
-# top_countries_data <- heritage::table_top_countries(heritage_clean)
+top_countries_data <- heritage::table_top_countries(heritage_clean)
 
-# knitr::kable(top_countries_data, caption = "Top 10 Countries with Most UNESCO World Heritage Sites")
+knitr::kable(top_countries_data, caption = "Top 10 Countries with Most UNESCO World Heritage Sites")
 ```
 
