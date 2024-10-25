@@ -35,7 +35,7 @@ ui <- dashboardPage(
               fluidRow(
                 box(title = "Trends in Heritage Sites", width = 12, solidHeader = TRUE,
                     status = "primary", plotOutput("trendsPlot")),
-                helpText("This plot shows the number of World Heritage Sites inscribed each year by region.")
+                helpText("This plot displays the number of World Heritage Sites inscribed each year, allowing you to explore trends in heritage site recognition across time. Use the filters to adjust the time period and heritage category displayed.")
               )
       ),
 
@@ -44,7 +44,7 @@ ui <- dashboardPage(
               fluidRow(
                 box(title = "Heritage Sites by Region and Category", width = 12, solidHeader = TRUE,
                     status = "success", plotOutput("regionCategoryPlot")),
-                helpText("This plot displays the number of heritage sites by region and category.")
+                helpText("This visualization provides an overview of the distribution of heritage sites by geographic region and category (e.g., Cultural, Natural). Explore how different regions prioritize or contribute to various heritage categories over time.")
               )
       ),
 
@@ -53,7 +53,7 @@ ui <- dashboardPage(
               fluidRow(
                 box(title = "Top 10 Countries with Most Heritage Sites", width = 12, solidHeader = TRUE,
                     status = "info", tableOutput("topCountriesTable")),
-                helpText("This table shows the top 10 countries with the most World Heritage Sites based on the selected category and year range.")
+                helpText("This table shows the top 10 countries with the highest number of World Heritage Sites within the selected time range and category. Use this information to understand which countries have the most sites recognized for their cultural or natural significance.")
               )
       )
     )

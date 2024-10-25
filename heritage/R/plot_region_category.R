@@ -13,13 +13,14 @@ plot_region_category <- function(data) {
     summarise(count = n(), .groups = 'drop')
 
   p <- ggplot(region_catfin_summary, aes(x = count, y = REGION, fill = CATFIN_FULL)) +
-    geom_bar(stat = "identity", position = position_dodge(width = 0.8), width = 0.7) +
+    geom_bar(stat = "identity", position = position_dodge(width = 0.8), width = 0.7, colour = "lightblue" ) +
     scale_x_log10() +
+    scale_fill_brewer(palette = "Pastel1") +
     labs(title = "Number of Heritage Sites by Region and Category",
          x = "Number of Sites",
          y = "Region",
          fill = "Category") +
     theme_minimal()
 
-  print(p)  # Explicitly print the plot to ensure it renders
+  print(p)
 }

@@ -9,11 +9,11 @@
 #' @export
 table_top_countries <- function(data) {
   top_countries <- data %>%
-    st_drop_geometry() %>%  # Dropping the geometry column
+    st_drop_geometry() %>%
     group_by(COUNTRY) %>%
     summarise(Total_Sites = n(), .groups = 'drop') %>%
     arrange(desc(Total_Sites)) %>%
     slice_head(n = 10)
 
-  return(top_countries)  # Return the data frame
+  return(top_countries)
 }

@@ -3,8 +3,7 @@ Title: Mapping the World’s Heritage: Insights into Trends and Regional Distrib
 Version: 0.1.0
 Authors@R: 
     person("Praachi", "Ajmera", email = "pajm0001@student.monash.edu", role = c("aut", "cre"))
-Description: This package provides functions to analyze trends and distributions of UNESCO World Heritage Sites, 
-             including visualizations and data summarization.
+Description: The `heritage` package provides tools for exploring and visualizing trends in UNESCO World Heritage Sites globally, focusing on data analysis and education. It includes functions for analyzing historical trends, regional distributions, and category breakdowns (Cultural, Natural, Mixed) of World Heritage Sites. Key features include time series analysis to track site inscriptions over time, regional distribution visualizations to compare contributions by region, and identification of countries with the most heritage sites. The package supports interactive visualizations and can be used with Shiny applications to create user-friendly dashboards, with comprehensive documentation and vignettes available for guidance.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

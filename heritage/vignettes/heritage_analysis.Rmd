@@ -1,5 +1,5 @@
 ---
-title: "heritage_analysis"
+title: "Exploring UNESCO World Heritage Site"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{heritage_analysis}
@@ -10,6 +10,49 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
 )
 ```
+
+```{r setup}
+library(dplyr)
+library(ggplot2)
+library(sf)
+library(heritage)
+```
+
+
+```{r}
+
+# Load your dataset
+data(heritage_clean)  
+
+# Display the structure of the dataset to understand its components
+str(heritage_clean)
+
+head(heritage_clean)
+```
+
+
+```{r}
+# Assuming you have a function to get trends data
+#trends_data <- plot_trends(heritage_clean)
+
+```
+
+```{r}
+# Plotting function for regional distribution
+# plot_region_category(heritage_clean)
+
+```
+
+
+```{r}
+# Function to get top countries data
+# top_countries_data <- heritage::table_top_countries(heritage_clean)
+
+# knitr::kable(top_countries_data, caption = "Top 10 Countries with Most UNESCO World Heritage Sites")
+```
+
