@@ -3,4 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   heritage_analysis: heritage_analysis.html
-last_built: 2024-10-25T11:52Z
+last_built: 2024-10-25T12:39Z
+urls:
+  reference: https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-PraachiAjmera9/reference
+  article: https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-PraachiAjmera9/articles
